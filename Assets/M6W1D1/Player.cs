@@ -21,24 +21,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         InputMovementPlayer();
-
-        if(Input.GetKeyDown(KeyCode.Y))
-        {
-            SaveData saveData = new SaveData();
-
-            saveData.posistion = new SavableVector3(transform.position);
-            saveData.rotation = new SavableQuaternion(transform.rotation);
-
-            SaveSystem.Save(saveData);
-        }
-
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            SaveData saveData = SaveSystem.Load();
-
-            transform.position = saveData.posistion.ToVector3();
-            transform.rotation = saveData.rotation.ToQuaternion();
-        }
     }
 
     private void FixedUpdate()

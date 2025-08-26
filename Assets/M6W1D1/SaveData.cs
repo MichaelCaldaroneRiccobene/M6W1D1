@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Search;
 using UnityEngine;
 
 [System.Serializable]
@@ -30,9 +28,31 @@ public class SavableQuaternion
 }
 
 [System.Serializable]
+public class SavebleTransform
+{
+    public string id;
+    public bool isDeastroyed;
+
+    public SavableVector3 position;
+    public SavableQuaternion rotation;
+
+    public SavebleTransform(string id,bool isDeastroyed, Vector3 position, Quaternion rotation)
+    {
+        this.id = id;
+        this.isDeastroyed = isDeastroyed;
+
+        this.position = new SavableVector3(position);
+        this.rotation = new SavableQuaternion(rotation);
+    }
+}
+
+
+[System.Serializable]
 public class SaveData
 {
     public SavableVector3 posistion;
 
     public SavableQuaternion rotation;
+
+    public List<SavebleTransform> obj = new List<SavebleTransform>();
 }
